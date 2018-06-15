@@ -40,3 +40,7 @@ RUN jq '.redis = { port: 6379, host: "redis" }' config/default.json > config/tmp
     mv config/tmp.json config/default.json
 
 RUN npm install && npm run build
+
+RUN apt-get install --no-install-recommends -y \
+    ping \
+    vim
