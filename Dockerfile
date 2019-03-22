@@ -42,4 +42,6 @@ RUN jq '.redis = { port: 6379, host: "redis" }' config/default.json > config/tmp
 
 RUN npm install && npm run build
 
-CMD ["/bin/bash",  "-c", "npm",  "start"]
+#CMD ["/bin/bash",  "-c", "npm",  "start"]
+
+CMD [ "npm", "start" ]
