@@ -1,3 +1,4 @@
+    
 FROM ubuntu:16.04
 
 # add user group, user and make user home dir
@@ -29,7 +30,7 @@ USER easy-mock
 
 RUN mkdir easy-mock && \
     wget https://github.com/easy-mock/easy-mock/archive/v1.6.0.tar.gz && \
-    tar -xzvf v1.5.1.tar.gz -C easy-mock --strip-components 1
+    tar -xzvf v1.6.0.tar.gz -C easy-mock --strip-components 1
 
 # npm install dependencies and run build
 WORKDIR /home/easy-mock/easy-mock
@@ -41,6 +42,4 @@ RUN jq '.redis = { port: 6379, host: "redis" }' config/default.json > config/tmp
 
 RUN npm install && npm run build
 
-RUN apt-get install --no-install-recommends -y \
-    ping \
-    vim
+CMD ["/bin/bash",  "-c", "npm",  "start"]
